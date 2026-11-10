@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bài tập CSS cơ bản Tuần 3 - Văn Ngọc Hân - UEH">
+  <title>CSS Tuần 3 | Văn Ngọc Hân</title>
+  <style>
+    :root {
+      --ink: #233e58;
+      --muted: #617b96;
+      --blue: #326fa9;
+      --blue-dark: #255985;
+      --sky: #e1efff;
+      --background: #f3f8fe;
+      --border: #d4e5f5;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #90bbef; outline-offset: 3px; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+
+    /* Header */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand {
+      color: var(--blue-dark);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+    .brand small { color: var(--muted); font-size: 12px; font-weight: 600; }
+    .topbar nav { display: flex; flex-wrap: wrap; gap: 22px; }
+    .topbar nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .topbar nav a:hover { color: var(--blue); }
+
+    /* Giới thiệu */
+    .hero {
+      background: linear-gradient(125deg, #dfefff 0%, #f7fbff 52%, #e8f2ff 100%);
+      padding: 60px 0;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 42px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue-dark);
+      border: 1px solid #c4def7;
+      border-radius: 99px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    h1 {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -.012em;
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+    h1 span { color: var(--blue); }
+    .hero-desc { color: #526f8b; max-width: 590px; font-size: 17px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background-color .2s, transform .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-outline { background: #fff; border: 1px solid #bcd9f2; color: var(--blue-dark); }
+    .btn-outline:hover { background: #e9f4ff; }
+    .portrait {
+      margin: 0;
+      position: relative;
+      max-width: 340px;
+      justify-self: center;
+      width: 100%;
+    }
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      object-position: center 28%;
+      border-radius: 22px;
+      box-shadow: 0 18px 45px rgba(47, 91, 141, .16);
+    }
+    .portrait figcaption {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      padding: 12px 16px;
+      color: var(--ink);
+      border-radius: 12px;
+      background: rgba(255,255,255,.94);
+      font-size: 14px;
+    }
+    .portrait figcaption strong { display: block; font-size: 17px; }
+
+    /* Thông tin cá nhân */
+    section.content-section { padding: 60px 0 0; }
+    .section-header { margin-bottom: 22px; }
+    .section-header p {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin: 0 0 7px;
+    }
+    .section-header h2 {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: clamp(27px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0;
+      margin: 0;
+    }
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      box-shadow: 0 5px 22px rgba(47,91,141,.06);
+    }
+    .fact-label { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .015em; }
+    .fact-value { margin-top: 5px; font-size: 16px; font-weight: 700; overflow-wrap: anywhere; }
+    .fact-value a { color: var(--blue-dark); }
+
+    /* Thẻ bài tập */
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .exercise-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 225px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .exercise-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(47,91,141,.1); }
+    .number {
+      display: inline-flex;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      border-radius: 10px;
+      background: var(--sky);
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .exercise-card h3 { margin: 15px 0 5px; font-size: 18px; font-weight: 700; letter-spacing: 0; }
+    .exercise-card p { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+    .card-links { display: flex; gap: 15px; flex-wrap: wrap; margin-top: auto; }
+    .card-links a { color: var(--blue); font-weight: 800; font-size: 14px; text-decoration: none; }
+    .card-links a:hover { text-decoration: underline; }
+    .note {
+      margin-top: 20px;
+      padding: 15px 19px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #eaf4ff;
+      color: #3d5f7f;
+      font-size: 14px;
+    }
+    footer {
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr 300px; gap: 24px; }
+      .exercise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(1120px, calc(100% - 28px)); }
+      .topbar-inner { padding: 15px 0; }
+      .hero { padding: 38px 0; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .portrait { max-width: 290px; }
+      .portrait img { height: 320px; }
+      .profile-card { grid-template-columns: 1fr; padding: 22px; gap: 20px; }
+      .exercise-grid { grid-template-columns: 1fr; }
+      section.content-section { padding-top: 42px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">UEH <small>/ CSS WEEK 03</small></a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#thong-tin">Thông tin</a>
+        <a href="#bai-tap">Bài tập</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="gioi-thieu">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">PHÁT TRIỂN ỨNG DỤNG TMĐT · TUẦN 3</span>
+          <h1>Thực hành <span>CSS cơ bản</span></h1>
+          <p class="hero-desc">Tổng hợp bài tập HTML và CSS: định dạng văn bản, menu, giao diện Portfolio, bố cục trang và hiệu ứng hover.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#bai-tap">Xem các bài tập</a>
+            <a class="btn btn-outline" href="https://github.com/han060414" target="_blank" rel="noopener noreferrer">GitHub cá nhân</a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <img src="images/anh-ca-nhan.jpg" alt="Ảnh cá nhân của sinh viên Văn Ngọc Hân">
+          <figcaption><strong>Văn Ngọc Hân</strong>Sinh viên UEH</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="thong-tin" class="content-section">
+      <div class="container">
+        <div class="section-header"><p>Student profile</p><h2>Thông tin sinh viên</h2></div>
+        <div class="profile-card">
+          <div><div class="fact-label">Họ và tên</div><div class="fact-value">Văn Ngọc Hân</div></div>
+          <div><div class="fact-label">Mã số sinh viên</div><div class="fact-value">31241027313</div></div>
+          <div><div class="fact-label">Học phần / lớp</div><div class="fact-value"><a href="https://lms.ueh.edu.vn/course/view.php?id=43858" target="_blank" rel="noopener noreferrer">Phát triển ứng dụng TMĐT – 26C1INF50902701</a></div></div>
+          <div><div class="fact-label">Trường</div><div class="fact-value">Đại học Kinh tế Thành phố Hồ Chí Minh (UEH)</div></div>
+          <div><div class="fact-label">GitHub</div><div class="fact-value"><a href="https://github.com/han060414" target="_blank" rel="noopener noreferrer">github.com/han060414</a></div></div>
+          <div><div class="fact-label">Facebook</div><div class="fact-value"><a href="https://www.facebook.com/van.ngoc.han.572495/" target="_blank" rel="noopener noreferrer">Trang Facebook cá nhân</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bai-tap" class="content-section">
+      <div class="container">
+        <div class="section-header"><p>Homework</p><h2>Danh sách bài tập</h2></div>
+        <div class="exercise-grid">
+          <article class="exercise-card">
+            <span class="number">01</span>
+            <h3>Game CSS</h3><p>Luyện CSS Selector qua CSS Diner và CSS Speedrun. Minh chứng từng level lưu trong thư mục BaiTap1.</p>
+            <div class="card-links"><a href="https://flukeout.github.io/" target="_blank" rel="noopener noreferrer">CSS Diner ↗</a><a href="https://css-speedrun.netlify.app/" target="_blank" rel="noopener noreferrer">Speedrun ↗</a></div>
+          </article>
+          <article class="exercise-card"><span class="number">02</span><h3>CSS cơ bản</h3><p>Định dạng chữ, logo nền lặp lại và xử lý nội dung tràn.</p><div class="card-links"><a href="BaiTap2.html">Xem Bài 2 →</a></div></article>
+          <article class="exercise-card"><span class="number">04</span><h3>Menu ngang</h3><p>Menu TMDT, ERP, MIS, DS sử dụng inline-block.</p><div class="card-links"><a href="BaiTap4.html">Xem Bài 4 →</a></div></article>
+          <article class="exercise-card"><span class="number">05</span><h3>Shared Hosting</h3><p>Thiết kế bố cục có logo, tiêu đề, mô tả và nút liên kết.</p><div class="card-links"><a href="BaiTap5.html">Xem Bài 5 →</a></div></article>
+          <article class="exercise-card"><span class="number">06</span><h3>My Portfolio</h3><p>Danh mục và lưới hình ảnh ba cột bằng CSS Grid.</p><div class="card-links"><a href="BaiTap6.html">Xem Bài 6 →</a></div></article>
+          <article class="exercise-card"><span class="number">07</span><h3>CSS Layout</h3><p>Bố cục trang gồm wrapper, header, nav, main và footer.</p><div class="card-links"><a href="BaiTap7.html">Xem Bài 7 →</a></div></article>
+          <article class="exercise-card"><span class="number">08</span><h3>The Bat Family</h3><p>Giao diện năm nhân vật Batman cùng hiệu ứng hover.</p><div class="card-links"><a href="BaiTap8.html">Xem Bài 8 →</a></div></article>
+          <article class="exercise-card"><span class="number">09</span><h3>Font Awesome</h3><p>Ứng dụng bộ icon Font Awesome 5 vào trang HTML.</p><div class="card-links"><a href="BaiTap9.html">Xem Bài 9 →</a></div></article>
+        </div>
+        <p class="note"><strong>Ghi chú:</strong> Bài 3 đã chọn phương án làm các Bài 4, 5, 6, 7 nên không có file BaiTap3.html riêng. Các liên kết nội bộ cần được kiểm tra sau khi chép đủ file vào thư mục VeNha.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 · Văn Ngọc Hân · Bài tập CSS Tuần 3 · UEH</div>
+  </footer>
+</body>
+</html>

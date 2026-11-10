@@ -1,0 +1,125 @@
+/* Bài 8b - CSS cơ bản: The Bat family */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 35px 16px;
+  background: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* i. Khung chứa lớn: 1024px, margin, canh lề */
+#root {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ii. site-header: canh lề, margin, background màu/hình, text-shadow */
+#site-header {
+  margin: 0 0 42px;
+  padding: 20px 16px;
+  background-color: #cecece;
+  color: #fff;
+  font-size: 32px;
+  line-height: 1.25;
+  text-shadow: 2px 2px 1px #555, -1px -1px 1px #777;
+}
+#site-header span {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+#site-header span::before {
+  content: "";
+  display: inline-block;
+  width: 62px;
+  height: 31px;
+  background-image: url("imgs/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* iii. Các li: width, display, position */
+.superheroes {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+}
+.superheroes li {
+  position: relative;
+  display: block;
+  width: 19%;
+  flex: 1 1 0;
+  min-width: 0;
+  transition: flex-grow 0.25s ease, transform 0.25s ease;
+}
+
+/* iv. Hình trong superheroes: border, max-width */
+.superheroes img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid #eee;
+  border-radius: 14px;
+}
+.hero-header {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  color: white;
+  font-size: clamp(12px, 1.6vw, 18px);
+  text-shadow: 1px 2px 3px #111, 0 0 5px #111;
+  pointer-events: none;
+}
+
+/* v. Thẻ a: display, width, color, text-decoration */
+.superheroes a {
+  display: none;
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  width: 100%;
+  padding: 9px 6px;
+  background: #777;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* vi. Hover: nhân vật rộng hơn, hiện Read more và gạch chân */
+.superheroes li:hover,
+.superheroes li:focus-within {
+  flex-grow: 1.45;
+  transform: translateY(-10px);
+  z-index: 3;
+}
+.superheroes li:hover a,
+.superheroes li:focus-within a {
+  display: block;
+  text-decoration: underline;
+}
+.superheroes a:hover,
+.superheroes a:focus-visible {
+  background: #555;
+}
+
+/* Hỗ trợ màn hình nhỏ mà không làm vỡ bố cục */
+@media (max-width: 600px) {
+  body { padding: 18px 10px; }
+  #site-header { font-size: 24px; margin-bottom: 25px; }
+  #site-header span::before { width: 42px; height: 23px; }
+  .superheroes { flex-wrap: wrap; gap: 12px; }
+  .superheroes li { flex: 0 1 calc(33.33% - 12px); }
+  .superheroes li:hover,
+  .superheroes li:focus-within { flex-grow: 0; }
+  .superheroes a { font-size: 13px; }
+}

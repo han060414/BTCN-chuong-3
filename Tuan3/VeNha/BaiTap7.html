@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập 7 - CSS Layout</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      margin: 0;
+      padding: 30px;
+    }
+
+    /* Khung chứa toàn bộ website */
+    #wrapper {
+      width: 500px;
+      max-width: 100%;
+      margin: 0 auto;
+      border: 3px solid black;
+      padding: 8px;
+    }
+
+    /* Phần đầu trang */
+    header {
+      height: 100px;
+      border: 2px solid black;
+      padding: 10px;
+      margin-bottom: 8px;
+    }
+
+    /* Khu vực nav và main */
+    .content {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    /* Thanh điều hướng bên trái */
+    nav {
+      width: 100px;
+      min-height: 300px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    /* Nội dung chính */
+    main {
+      flex: 1;
+      min-height: 300px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    /* Chân trang */
+    footer {
+      height: 60px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="wrapper">
+    wrapper
+
+    <header>
+      header
+    </header>
+
+    <div class="content">
+      <nav>
+        nav
+      </nav>
+
+      <main>
+        main
+      </main>
+    </div>
+
+    <footer>
+      footer
+    </footer>
+
+  </div>
+
+</body>
+</html>
