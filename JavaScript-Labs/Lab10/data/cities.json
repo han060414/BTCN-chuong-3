@@ -1,0 +1,32 @@
+{
+  "cities": [
+    {
+      "id": 1,
+      "name": "Hà Nội"
+    },
+    {
+      "id": 2,
+      "name": "TP. Hồ Chí Minh"
+    },
+    {
+      "id": 3,
+      "name": "Đà Nẵng"
+    },
+    {
+      "id": 4,
+      "name": "Huế"
+    },
+    {
+      "id": 5,
+      "name": "Cần Thơ"
+    },
+    {
+      "id": 6,
+      "name": "Nha Trang"
+    },
+    {
+      "id": 7,
+      "name": "Đà Lạt"
+    }
+  ]
+}
